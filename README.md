@@ -6,10 +6,8 @@ This [MagicMirror2](https://github.com/MichMich/MagicMirror) module allows you t
 In your terminal, go to your MagicMirror's Module folder:
 ````
 cd ~/MagicMirror/modules
-
-Clone this repository:
-````
 git clone https://github.com/spectroman/mmm-moon-phases.git
+````
 
 Configure the module in your `config.js` file.
 
