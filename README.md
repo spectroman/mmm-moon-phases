@@ -1,0 +1,30 @@
+# Magic Mirror Module: mmm-moon-phases
+This [MagicMirror2](https://github.com/MichMich/MagicMirror) module allows you to fetch an image of the moon in its current phase
+
+## Installation
+
+In your terminal, go to your MagicMirror's Module folder:
+
+cd ~/MagicMirror/modules
+
+Clone this repository:
+
+git clone https://github.com/spectroman/mmm-moon-phases.git
+
+Configure the module in your `config.js` file.
+
+## Using the module
+
+There isn't much to configure really, you just need to position it, you can always hack him to find a better suitable size for you
+
+Now add the module to the modules array in the `config/config.js` file:
+
+modules: [
+        {
+                module: 'mmm-moon-phases',
+                header: 'Current Moon Phase',   // optionally you can add a header to this block
+                position: 'bottom_left',        // this can be any of the regions
+                config: {
+                }
+        },
+]
