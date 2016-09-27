@@ -1,3 +1,13 @@
+
+/* MMM2 Module */
+
+/* spectroman's
+ * Module: Moon Phases
+ *
+ * By Spectroman https://juliochegedus.com
+ * MIT Licensed.
+ */
+
 Module.register("mmm-moon-phases", {
         defaults: {
                 updateInterval: 86400 * 1000 // every day
