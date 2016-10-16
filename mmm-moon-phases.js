@@ -10,7 +10,8 @@
 
 Module.register("mmm-moon-phases", {
         defaults: {
-                updateInterval: 86400 * 1000 // every day
+                updateInterval: 7200 * 1000, // every 2 hours
+                initialLoadDelay: 1
         },
         getDom: function() {
                 // fetch a picture, that changes daily but it has the same name - many sites can provide that
@@ -27,12 +28,34 @@ Module.register("mmm-moon-phases", {
                 wrapper.style.overflow = "hidden";
                 wrapper.style.position = "relative";
                 wrapper.innerHTML = img;
+                Log.info("Updating Moon Picture");
                 return wrapper;
         },
+
+        // Define start sequence.
         start: function() {
-                var self = this;
-                setInterval(function() {
-                        self.updateDom(); // no speed defined, so it updates instantly.
-                }, this.config.updateInterval);
+                Log.info("Starting module: " + this.name);
+
+                this.loaded = false;
+                this.scheduleUpdate(this.config.initialLoadDelay);
+
+                this.updateTimer = null;
+
         },
+
+
+        scheduleUpdate: function(delay) {
+                var nextLoad = this.config.updateInterval;
+                if (typeof delay !== "undefined" && delay >= 0) {
+                        nextLoad = delay;
+                }
+
+                var self = this;
+                clearTimeout(this.updateTimer);
+                this.updateTimer = setTimeout(function() {
+                        self.updateDom();
+                }, nextLoad);
+        },
+
 });
+
