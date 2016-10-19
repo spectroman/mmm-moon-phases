@@ -16,7 +16,7 @@ Module.register("mmm-moon-phases", {
         getDom: function() {
                 // fetch a picture, that changes daily but it has the same name - many sites can provide that
                 // api.usno.navy.mil/imagery/moon.png is in reality 1024x1024 but we show by default at 200px x 200px
-                var src = "http://api.usno.navy.mil/imagery/moon.png";
+                var src = "http://api.usno.navy.mil/imagery/moon.png?" + new Date().getTime();
 
                 var style = "position: absolute; left: 5px; top: -35px;";
 
