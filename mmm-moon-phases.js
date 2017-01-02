@@ -1,4 +1,4 @@
-
+/* global Log, Module */
 /* MMM2 Module */
 
 /* spectroman's
