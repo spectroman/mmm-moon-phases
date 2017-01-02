@@ -11,7 +11,9 @@
 Module.register("mmm-moon-phases", {
         defaults: {
                 updateInterval: 7200 * 1000, // every 2 hours
-                initialLoadDelay: 1
+                initialLoadDelay: 1,
+                height: 200,
+                width: 200
         },
         getDom: function() {
                 // fetch a picture, that changes daily but it has the same name - many sites can provide that
@@ -20,11 +22,11 @@ Module.register("mmm-moon-phases", {
 
                 var style = "position: absolute; left: 5px; top: -35px;";
 
-                var img = "<img height='200' width='200' src='" + src + "' style='" + style + "'>";
+                var img = "<img height='" + this.config.height +"' width='" + this.config.width +"' src='" + src + "' style='" + style + "'>";
 
                 var wrapper = document.createElement("div");
-                wrapper.style.width = "200px";
-                wrapper.style.height = "200px";
+                wrapper.style.width = this.config.width + "px";
+                wrapper.style.height = this.config.height + "px";
                 wrapper.style.overflow = "hidden";
                 wrapper.style.position = "relative";
                 wrapper.innerHTML = img;
