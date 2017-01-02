@@ -18,18 +18,22 @@ Module.register("mmm-moon-phases", {
         getDom: function() {
                 // fetch a picture, that changes daily but it has the same name - many sites can provide that
                 // api.usno.navy.mil/imagery/moon.png is in reality 1024x1024 but we show by default at 200px x 200px
-                var src = "http://api.usno.navy.mil/imagery/moon.png?" + new Date().getTime();
-
-                var style = "position: absolute; left: 5px; top: -35px;";
-
-                var img = "<img height='" + this.config.height +"' width='" + this.config.width +"' src='" + src + "' style='" + style + "'>";
 
                 var wrapper = document.createElement("div");
                 wrapper.style.width = this.config.width + "px";
                 wrapper.style.height = this.config.height + "px";
                 wrapper.style.overflow = "hidden";
                 wrapper.style.position = "relative";
-                wrapper.innerHTML = img;
+                
+                var img = document.createElement("img");
+                img.style.position = "absolute";
+                img.style.left = "5px";
+                img.style.top = "-35px";
+                img.height = this.config.height;
+                img.width = this.config.width;
+                img.src = "http://api.usno.navy.mil/imagery/moon.png?" + new Date().getTime();
+                wrapper.appendChild(img);
+
                 Log.info("Updating Moon Picture");
                 return wrapper;
         },
