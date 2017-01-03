@@ -13,7 +13,7 @@ Configure the module in your `config.js` file.
 
 ## Using the module
 
-There isn't much to configure really, you just need to position it, you can always hack him to find a better suitable size for you
+There isn't much to configure really, you just need to position it and optionally set a suitable size for you via the config options.
 
 Now add the module to the modules array in the `config/config.js` file:
 ````javascript
@@ -26,3 +26,9 @@ modules: [
                 }
         },
 ]
+
+## Config Options
+| **Option** | **Default** | **Description** |
+| --- | --- | --- |
+| `height` | 200 | The height of the image. |
+| `width` | 200 | The width of the image. |
