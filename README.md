@@ -26,7 +26,7 @@ modules: [
                 }
         },
 ]
-
+```
 ## Config Options
 | **Option** | **Default** | **Description** |
 | --- | --- | --- |
