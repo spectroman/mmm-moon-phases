@@ -26,8 +26,7 @@ modules: [
                 config: {
                 }
         },
-]
-```
+]```
 
 ## Config Options
 | **Option** | **Default** | **Description** |
