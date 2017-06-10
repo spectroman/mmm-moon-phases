@@ -16,6 +16,7 @@ Configure the module in your `config.js` file.
 There isn't much to configure really, you just need to position it and optionally set a suitable size for you via the config options.
 
 Now add the module to the modules array in the `config/config.js` file:
+
 ````javascript
 modules: [
         {
@@ -27,6 +28,7 @@ modules: [
         },
 ]
 ```
+
 ## Config Options
 | **Option** | **Default** | **Description** |
 | --- | --- | --- |
