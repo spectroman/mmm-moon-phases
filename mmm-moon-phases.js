@@ -10,31 +10,42 @@
 
 Module.register("mmm-moon-phases", {
         defaults: {
-                updateInterval: 7200 * 1000, // every 2 hours
+                updateInterval: 14400 * 1000, // every 2 hours
                 initialLoadDelay: 1,
+                retryDelay: 2500,
                 height: 200,
-                width: 200
+                width: 200,
+//              delay: 0,
+                domain: "tycho.usno.navy.mil",
+                path: "/gif/phase.gif",
+                homeMM: "/home/pi/MagicMirror/"
         },
+
+        // Define required scripts.
+        getScripts: function() {
+                return ["moment.js"];
+
+        },
+
         getDom: function() {
-                // fetch a picture, that changes daily but it has the same name - many sites can provide that
-                // api.usno.navy.mil/imagery/moon.png is in reality 1024x1024 but we show by default at 200px x 200px
+                if (typeof this.imgmoon == "undefined") {
+                    self.updateMoon();
+                }
 
                 var wrapper = document.createElement("div");
                 wrapper.style.width = this.config.width + "px";
                 wrapper.style.height = this.config.height + "px";
                 wrapper.style.overflow = "hidden";
                 wrapper.style.position = "relative";
-                
+
                 var img = document.createElement("img");
                 img.style.position = "absolute";
                 img.style.left = "5px";
-                img.style.top = "-35px";
+                img.style.top = "-15px";
                 img.height = this.config.height;
                 img.width = this.config.width;
-                img.src = "http://api.usno.navy.mil/imagery/moon.png?" + new Date().getTime();
+                img.src = this.imgmoon;
                 wrapper.appendChild(img);
-
-                Log.info("Updating Moon Picture");
                 return wrapper;
         },
 
@@ -44,11 +55,26 @@ Module.register("mmm-moon-phases", {
 
                 this.loaded = false;
                 this.scheduleUpdate(this.config.initialLoadDelay);
-
                 this.updateTimer = null;
 
         },
 
+        updateMoon: function() {
+                var self = this;
+                self.sendSocketNotification("BRING_MOON", { homeMM: this.config.homeMM, domain: this.config.domain, path: this.config.path } );
+        },
+
+        socketNotificationReceived: function(notification, payload) {
+                if(notification === "MOON"){
+                        this.imgmoon=payload
+                        if (typeof this.imgmoon !== "undefined") {
+                            this.loaded=true;
+                            this.updateDom();
+                        };
+                        this.scheduleUpdate();
+                }
+
+        },
 
         scheduleUpdate: function(delay) {
                 var nextLoad = this.config.updateInterval;
@@ -59,9 +85,8 @@ Module.register("mmm-moon-phases", {
                 var self = this;
                 clearTimeout(this.updateTimer);
                 this.updateTimer = setTimeout(function() {
-                        self.updateDom();
+                        self.updateMoon();
                 }, nextLoad);
         },
 
 });
-
