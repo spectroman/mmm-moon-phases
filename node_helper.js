@@ -21,8 +21,8 @@ module.exports = NodeHelper.create({
 
                         var request = http.get(options, function (response) {
                                 var imagedata = '';
-                                del([payload.homeMM+'modules/mmm-moon-phases/cache/*.png']);
-                                var cache_file = '/modules/mmm-moon-phases/cache/moon-'+new Date().getTime()+'.png';
+                                del([payload.homeMM+'/modules/mmm-moon-phases/cache/*.gif']);
+                                var cache_file = '/modules/mmm-moon-phases/cache/moon-'+new Date().getTime()+'.gif';
 
                                 var newimage = fs.createWriteStream(payload.homeMM+cache_file);
 

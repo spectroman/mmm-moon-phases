@@ -13,12 +13,12 @@ Module.register("mmm-moon-phases", {
                 updateInterval: 14400 * 1000, // every 2 hours
                 initialLoadDelay: 1,
                 retryDelay: 2500,
-                height: 200,
-                width: 200,
+                height: 150,
+                width: 150,
 //              delay: 0,
                 domain: "tycho.usno.navy.mil",
                 path: "/gif/phase.gif",
-                homeMM: "/home/pi/MagicMirror/"
+                homeMM: "/home/pi/MagicMirror"
         },
 
         // Define required scripts.
