@@ -28,10 +28,6 @@ Module.register("mmm-moon-phases", {
         },
 
         getDom: function() {
-                if (typeof this.imgmoon == "undefined") {
-                    self.updateMoon();
-                }
-
                 var wrapper = document.createElement("div");
                 wrapper.style.width = this.config.width + "px";
                 wrapper.style.height = this.config.height + "px";
