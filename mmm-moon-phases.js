@@ -37,7 +37,7 @@ Module.register("mmm-moon-phases", {
                 var img = document.createElement("img");
                 img.style.position = "absolute";
                 img.style.left = "5px";
-                img.style.top = "-15px";
+                img.style.top = "-" + Math.round(this.config.height / 10) + "px";
                 img.height = this.config.height;
                 img.width = this.config.width;
                 img.src = this.imgmoon;
