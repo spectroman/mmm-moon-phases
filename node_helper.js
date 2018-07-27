@@ -15,7 +15,7 @@ module.exports = NodeHelper.create({
                 var self = this;
                 console.log("Downloading moon img with signal: " + notification + " From URL: " + payload.domain + payload.path);
 
-                var options = { host: payload.domain, path: payload.path };
+                var options = { host: payload.domain, path: payload.path, strictSSL : false, rejectUnauthorized : false };
 
                 if(notification === "BRING_MOON"){
 
