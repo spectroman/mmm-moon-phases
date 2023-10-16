@@ -1,3 +1,15 @@
+# This Module is discontinued, there will be no more updates
+
+
+I do not use this module myself, I still have one moon phase module but I use:
+
+https://github.com/NolanKingdon/MMM-MoonPhase
+
+## This repo is now discontinued
+
+-----------------------------------
+
+
 # Magic Mirror Module: mmm-moon-phases
 This [MagicMirror2](https://github.com/MichMich/MagicMirror) module allows you to fetch an image of the moon in its current phase
 
